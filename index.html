@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f1e8">
+  <meta name="description" content="16道题，从40座热门与小众目的地中找到与你旅行偏好最契合的中国城市，并获得3天与7天路线。">
+  <title>城遇 - 测测你的命定城市</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="intro-screen" class="screen intro-screen is-active" aria-labelledby="intro-title">
+      <div class="intro-photo" aria-hidden="true">
+        <div class="route-line route-line-a"></div>
+        <div class="route-line route-line-b"></div>
+        <div class="landmark landmark-1">山</div>
+        <div class="landmark landmark-2">城</div>
+        <div class="landmark landmark-3">海</div>
+      </div>
+
+      <nav class="topbar" aria-label="品牌信息">
+        <a class="brand" href="#" aria-label="城遇首页">
+          <span class="brand-mark">城</span>
+          <span>城遇</span>
+        </a>
+        <span class="edition">2026 · 国庆版</span>
+      </nav>
+
+      <div class="intro-content">
+        <p class="eyebrow"><span></span> CITY AFFINITY TEST</p>
+        <h1 id="intro-title">哪座城市<br><em>最懂你？</em></h1>
+        <p class="intro-copy">16 道旅行场景题，从热门与小众目的地中找到与你的节奏、味觉和好奇心最契合的城市。</p>
+
+        <div class="intro-meta" aria-label="测试信息">
+          <span><i data-lucide="clock-3"></i>约 3 分钟</span>
+          <span><i data-lucide="map-pin"></i>40 座候选城市</span>
+          <span><i data-lucide="route"></i>双路线计划</span>
+        </div>
+
+        <button id="start-btn" class="primary-btn start-btn" type="button">
+          开始寻找我的城市
+          <i data-lucide="arrow-right"></i>
+        </button>
+        <p class="microcopy">无需登录 · 不收集个人信息 · 答案仅保存在本机</p>
+      </div>
+
+      <div class="next-hint" aria-hidden="true">
+        <span>凭直觉作答</span>
+        <i data-lucide="chevron-down"></i>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="screen quiz-screen" aria-labelledby="question-title">
+      <header class="quiz-header">
+        <button id="back-btn" class="icon-btn" type="button" aria-label="返回上一题" title="返回上一题">
+          <i data-lucide="arrow-left"></i>
+        </button>
+        <div class="quiz-progress-wrap">
+          <div class="quiz-progress-label">
+            <span id="stage-label">旅行偏好</span>
+            <strong><span id="question-index">1</span> / <span id="question-total">16</span></strong>
+          </div>
+          <div class="progress-track"><div id="progress-bar" class="progress-bar"></div></div>
+        </div>
+        <button id="close-btn" class="icon-btn" type="button" aria-label="退出测试" title="退出测试">
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+
+      <div class="quiz-main">
+        <div class="question-number" id="question-number">01</div>
+        <p id="question-kicker" class="question-kicker">抵达一座陌生城市</p>
+        <h2 id="question-title">你最想先看见什么？</h2>
+        <p class="question-helper">选择最接近你第一反应的一项</p>
+        <div id="options" class="options" role="radiogroup" aria-labelledby="question-title"></div>
+      </div>
+
+      <footer class="quiz-footer">
+        <span>没有标准答案</span>
+        <span id="answer-status">请选择一项继续</span>
+      </footer>
+    </section>
+
+    <section id="loading-screen" class="screen loading-screen" aria-live="polite">
+      <div class="compass" aria-hidden="true">
+        <span class="compass-ring"></span>
+        <span class="compass-needle"></span>
+        <span class="compass-center"></span>
+      </div>
+      <p class="eyebrow"><span></span> ANALYSING YOUR ROUTE</p>
+      <h2>正在寻找与你<br>同频的城市</h2>
+      <p id="loading-copy">比对你的旅行节奏...</p>
+      <div class="loading-track"><span id="loading-bar"></span></div>
+    </section>
+
+    <section id="result-screen" class="screen result-screen" aria-labelledby="result-city">
+      <div id="result-hero" class="result-hero">
+        <header class="result-topbar">
+          <a class="brand brand-light" href="#" aria-label="城遇首页">
+            <span class="brand-mark">城</span>
+            <span>城遇</span>
+          </a>
+          <button id="share-btn-top" class="icon-btn icon-btn-glass" type="button" aria-label="分享结果" title="分享结果">
+            <i data-lucide="share-2"></i>
+          </button>
+        </header>
+
+        <div class="result-hero-shade"></div>
+        <div class="result-hero-content">
+          <p class="result-overline">你的命定城市是</p>
+          <h1 id="result-city">泉州</h1>
+          <p id="result-archetype" class="result-archetype">世遗慢游者</p>
+          <div class="score-lockup">
+            <div id="score-ring" class="score-ring" style="--score: 88">
+              <strong id="result-score">88</strong>
+              <span>匹配分</span>
+            </div>
+            <p id="result-tagline">你不是赶路的人。你更适合在旧街的光影里，慢慢遇见一座城。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-body">
+        <section class="result-section why-section">
+          <div class="section-heading">
+            <span>01</span>
+            <div><p>WHY HERE</p><h2>为什么是这里</h2></div>
+          </div>
+          <div id="reason-list" class="reason-list"></div>
+          <div id="reality-note" class="reality-note">
+            <i data-lucide="info"></i>
+            <p></p>
+          </div>
+        </section>
+
+        <section class="result-section">
+          <div class="section-heading">
+            <span>02</span>
+            <div><p>TASTE & VIEW</p><h2>城市滋味与风景</h2></div>
+          </div>
+          <div class="discovery-grid">
+            <article class="discovery-panel">
+              <div class="panel-title"><i data-lucide="utensils"></i><h3>值得吃</h3></div>
+              <div id="food-list" class="chip-list"></div>
+            </article>
+            <article class="discovery-panel">
+              <div class="panel-title"><i data-lucide="camera"></i><h3>值得看</h3></div>
+              <div id="sight-list" class="sight-list"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="result-section itinerary-section">
+          <div class="section-heading route-heading">
+            <span>03</span>
+            <div><p>YOUR ITINERARY</p><h2>为你排好的路线</h2></div>
+          </div>
+          <div class="segmented" role="tablist" aria-label="路线天数">
+            <button id="route-3-btn" class="segment is-active" type="button" role="tab" aria-selected="true" data-days="3">3 天轻体验</button>
+            <button id="route-7-btn" class="segment" type="button" role="tab" aria-selected="false" data-days="7">7 天深度游</button>
+          </div>
+          <div id="route-summary" class="route-summary"></div>
+          <div id="itinerary-list" class="itinerary-list"></div>
+        </section>
+
+        <section class="result-section alternatives-section">
+          <div class="section-heading">
+            <span>04</span>
+            <div><p>ALSO FOR YOU</p><h2>你的另外两种可能</h2></div>
+          </div>
+          <div id="alternative-list" class="alternative-list"></div>
+        </section>
+
+        <div class="result-actions">
+          <button id="share-btn" class="primary-btn" type="button">
+            <i data-lucide="share-2"></i>分享我的城市
+          </button>
+          <button id="restart-btn" class="secondary-btn" type="button">
+            <i data-lucide="rotate-ccw"></i>重新测试
+          </button>
+        </div>
+
+        <p class="result-disclaimer">匹配分来自本测试的旅行偏好规则，仅供旅行灵感与娱乐参考。出发前请核实天气、开放时间与预约政策。</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="share-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="share-title">
+      <button class="icon-btn modal-close" type="button" data-close-modal aria-label="关闭" title="关闭"><i data-lucide="x"></i></button>
+      <p class="modal-kicker">RESULT CARD</p>
+      <h2 id="share-title">保存你的城市结果</h2>
+      <canvas id="share-canvas" width="1080" height="1440"></canvas>
+      <p class="canvas-hint">长按图片保存，或使用下方按钮下载</p>
+      <button id="download-card-btn" class="primary-btn" type="button"><i data-lucide="download"></i>下载结果图</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="data.js"></script>
+  <script src="cities-extra.js"></script>
+  <script src="cities-more.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
